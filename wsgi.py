@@ -4,18 +4,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-  print('request-data -> ', request.get_json()['link'])
-  videoURL = request.get_json()['link']
   return 'Welcome to Home Page!'
-
-@app.route('/about')
-def about():
-  res = {
-    "page": "about",
-    "Server IP": "127.0.0.1",
-    "test": True,
-  }
-  return jsonify(res)
 
 @app.route('/downloadYoutubeVideo')
 def downloadYoutubeVideo():
