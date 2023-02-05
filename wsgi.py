@@ -1,6 +1,5 @@
 from flask import Flask, jsonify, request
-import os
-from routes import  downloadVideo, downloadAudioOnly, downloadVideoOnly, downloadPlaylistVideos
+from routes import  downloadVideo, downloadAudioOnly, downloadPlaylistVideos
 app = Flask(__name__)
 
 @app.route('/')

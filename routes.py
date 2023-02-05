@@ -44,7 +44,7 @@ def downloadAudioOnly(videoURL, downloadPath = DOWNLOAD_PATH):
     print("An error has occurred", str(e))
     return False
 
-def downloadVideoOnly(videoURL, downloadPath = DOWNLOAD_PATH):
+
   youtubeObject = YouTube(videoURL)
   try:
     youtubeObject.streams.filter(only_video=True).first().download(downloadPath)
