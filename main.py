@@ -1,5 +1,7 @@
 from flask import Flask, jsonify, request
 from routes import  downloadVideo, downloadAudioOnly, downloadPlaylistVideos
+import os
+
 app = Flask(__name__)
 
 @app.route('/')
@@ -44,4 +46,4 @@ def downloadYoutubePlaylist():
 
 
 if __name__ == '__main__':
-  app.run(debug=True)
+  app.run(debug=True, port=os.getenv("PORT", default=5000))
