@@ -10,7 +10,7 @@ CORS(app)
 def index():
   return 'Welcome to Home Page!'
 
-@app.route('/downloadYoutubeVideo')
+@app.route('/downloadYoutubeVideo', methods=['POST'])
 def downloadYoutubeVideo():
   videoURL = request.get_json()['videoLink']
   # downloadPath = request.get_json()['path']
