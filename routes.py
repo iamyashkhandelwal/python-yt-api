@@ -21,18 +21,21 @@ def downloadPlaylistVideos(playlistUrl, downloadPath = DOWNLOAD_PATH):
 
 # downloadPlaylistVideos("https://www.youtube.com/watch?v=hGuwdn9mHnc&list=PLJUTYXGp-CH4zDSPpDgOvDHf2Q4XD-Zqu")
 
-def downloadVideo(videoURL, downloadPath = DOWNLOAD_PATH):
+def downloadVideo(videoURL):
     youtubeObject = YouTube(videoURL)
+    response = dict();
     # youtubeObject = youtubeObject.streams.get_highest_resolution()
     # youtubeObject = youtubeObject.streams.filter(res="1080")
     try:
-        youtubeObject.streams.filter(resolution='720p', mime_type='video/mp4').first().download(downloadPath)
-        # youtubeObject.download(downloadPath)
-        print("Video downloaded!")
-        return True
+        # youtubeObject.streams.filter(resolution='720p', mime_type='video/mp4').first().download(downloadPath)
+        downloadUrl = youtubeObject.streams.filter(resolution='720p', mime_type='video/mp4').first().url
+        response['downloadUrl'] = downloadUrl
+        print("Video download Url generated!")
+        return response
     except Exception as e:
         print("An error has occurred", str(e))
-        return False
+        response["downloadUrl"] = None
+        return response
 
 def downloadAudioOnly(videoURL, downloadPath = DOWNLOAD_PATH):
   youtubeObject = YouTube(videoURL)

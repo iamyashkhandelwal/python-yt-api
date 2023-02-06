@@ -14,16 +14,16 @@ def downloadYoutubeVideo():
   # downloadPath = request.get_json()['path']
   response = downloadVideo(videoURL)
   # response = downloadAudioOnly(videoURL)
-  
-  if response:
+  if response["downloadUrl"] is not None:
     return jsonify({
       "code": 200,
-      "message": "Your video has been downloaded successfully"
+      "downloadUrl": response["downloadUrl"],
+      "message": "Video download URL generated successfully"
     })
   else:
     return jsonify({
       "code": 404,
-      "message": "Couldn't download video"
+      "message": "Couldn't generate video download URL"
     })
 
 @app.route('/downloadPlaylist')
